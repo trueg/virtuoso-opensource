@@ -24,6 +24,9 @@ use ODS;
 
 -------------------------------------------------------------------------------
 --
+/**
+ * \brief Change a configuration setting on the Calendar app
+ */
 create procedure ODS.ODS_API.calendar_setting_set (
   inout settings any,
   inout options any,
@@ -41,6 +44,12 @@ create procedure ODS.ODS_API.calendar_setting_set (
 
 -------------------------------------------------------------------------------
 --
+/**
+ * \brief A Calendar setting encoded as XML.
+ *
+ * \param settings
+ * \param settingName
+ */
 create procedure ODS.ODS_API.calendar_setting_xml (
   in settings any,
   in settingName varchar)
@@ -104,6 +113,9 @@ create procedure ODS.ODS_API."calendar.get" (
 
 -------------------------------------------------------------------------------
 --
+/**
+ * \brief Create a new Calendar event
+ */
 create procedure ODS.ODS_API."calendar.event.new" (
   in inst_id integer,
   in uid varchar := null,
