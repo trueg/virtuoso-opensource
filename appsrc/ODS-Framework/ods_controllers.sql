@@ -5762,6 +5762,36 @@ create procedure ODS.ODS_API."instance.get" (
 }
 ;
 
+/**
+ * \brief Get the app instance id by name.
+ *
+ * Each ODS app has a unique numeric id which is required for almost
+ * all operations. This method allows to determine that id from the
+ * app instance's name (App instance names are oftern something like
+ * "foobar's Calendar").
+ *
+ * \param[in] instanceName The name of the instance.
+ *
+ * \return The instance id or an error if the instance name does not
+ * exist.
+ *
+ * Example:
+ * \code
+$ curl -i "http://localhost:8894/ods/api/instance.get.id?user_name=test1&password_hash=ceaff0fb7e79a7929ba9fbccfe863585df6401d1&instanceName=MyAddressBook1"
+HTTP/1.1 200 OK
+Server: Virtuoso/05.12.3041 (Win32) i686-generic-win-32  VDB
+Connection: Keep-Alive
+Date: Wed, 30 Dec 2009 11:59:34 GMT
+Accept-Ranges: bytes
+Content-Type: text/xml; charset="ISO-8859-1"
+Content-Length: 59
+
+<result>
+  <code>225</code>
+  <message>Success</message>
+</result>
+ * \endcode
+ */
 create procedure ODS.ODS_API."instance.get.id" (
   in instanceName varchar) __soap_http 'text/xml'
 {
