@@ -64,8 +64,20 @@ Also there are available [[VirtuosoOdsControllersClientApiExamples][Examples of 
 
 The following Response format are supported by the ODS Controllers implementation:
 
-|Operation|Format|Example|Description|
-|IUD operations| On success; On failure|<b>On success</b>: <verbatim>&lt;result><br/>&nbsp;&nbsp;&lt;code>NNN&lt;/code><br/>&nbsp;&nbsp;&lt;message>human readable explanation if applicable&lt;/message><br/>&lt;/result></verbatim><br/><b>On failure</b>:  <verbatim>&lt;failed><br/>&nbsp;&nbsp;&lt;code>NNN&lt;/code><br/>&nbsp;&nbsp;&lt;message>human readable explanation&lt;/message><br/>&lt;/failed></verbatim>|The IUD methods return an XML response with code & message format are On success and On failure|
-|Search (get)| | |The search methods returns results in RDF format according to FOAF, SIOC and SIOC types module ontology. See ODS RDF model.|
+\subsection ods_response_format_result_code ODS Result Code
 
+CRUD operations typically return an error/result code serialized as XML. Such an error code typically looks as follows:
+
+\verbatim
+<result>
+  <code>NNN</code>
+  <message>human readable explanation if applicable</message>
+</result>
+\endverbatim
+
+It contains a numeric error code and a human-readable error message. On success this message is typically "Success".
+
+\subsection ods_response_format_search_result ODS Search Results
+
+The search methods return results in RDF format according to FOAF, SIOC and SIOC types module ontology. See ODS RDF model.
 */
