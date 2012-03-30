@@ -1,0 +1,71 @@
+/**
+\mainpage ODS - OpenLink Data Spaces - The RESTful API
+
+FIXME: Write an introduction
+
+\section ods_overview Overview
+
+ODS consists of the core framework and several apps. This API documentation is structured in a similar fashion.
+
+- \ref ods_module_user
+- \ref ods_module_instance
+- \ref ods_module_ontology
+- \ref ods_module_calendar
+
+\section ods_access_point ODS Access Point
+
+The API described here can be accessed via REST using http://host:port/ods/api/[method]. Parameters specific to each
+method are given as URL parameters if using GET, as www-url-encoded or multipart/form-data if using POST. Many methods
+come with examples to make it easier to get started.
+
+\section ods_authentication ODS Authentication
+
+Most API calls which modify data, i.e., CRUD operations, need authentication; thus
+the requests need to be authenticated using OAuth, or session + password hashes. The
+user account used to authenticate in either case MUST have relevant privileges to a given
+ODS data space. This is done by granting owner or author level membership to the given data space.
+
+
+\subsection ods_authentication_password_hash Password Hash Authentication
+
+When authenticating via password hashes parameters \p 'user_name' and \p 'password_hash' need to be specified. The
+password hash uses the =sha1= digest algorithm and includes both the user name and the password.
+
+\subsubsection ods_authentication_password_hash_examples Password Hash Authentication Example
+
+To authenticate user =demo= with password =foobar= the sha1 digest of the term =demofoobar= needs to be provided.
+This can be created via openssl or any sha1 tool:
+\code
+# echo -n "demofoobar" | openssl dgst -sha1
+# echo -n "demofoobar" | sha1sum
+\endcode
+
+\subsection ods_authentication_oauth OAuth
+
+The user account for authentication must have OAuth tokens generated via ODS -> Settings -> OAuth keys. This UI provides
+a list of all applications to which the user has access (i.e., he/she is member or owner). If an instance needs to be
+accessed with OAuth, user simply selects the instance from the list and clicks 'generate keys'. The generated consumer
+key & token will be associated to the active ODS user account and selected application instance.
+
+Once a consumer token is available, the sequence below must be done in order to establish an authorized session:
+   -# client uses request_token to get a token/secret pair for establishing session using consumer token
+   -# client asks OAuth server to authorize the token from step 1
+   -# using authorized token from step 1, client asks OAuth server for authentication token
+   -# with authentication token from step 3, clients can access instance data associated with the consumer token from step 1
+
+\subsubsection ods_authentication_oauth_examples OAuth Authentication Examples
+
+To demonstrate the above, we supply [[VirtuosoOdsControllersClientApi][a simple client written in VSP]].
+
+Also there are available [[VirtuosoOdsControllersClientApiExamples][Examples of sample session]] recorded with the client above.
+
+
+\section ods_response_format Response format
+
+The following Response format are supported by the ODS Controllers implementation:
+
+|Operation|Format|Example|Description|
+|IUD operations| On success; On failure|<b>On success</b>: <verbatim>&lt;result><br/>&nbsp;&nbsp;&lt;code>NNN&lt;/code><br/>&nbsp;&nbsp;&lt;message>human readable explanation if applicable&lt;/message><br/>&lt;/result></verbatim><br/><b>On failure</b>:  <verbatim>&lt;failed><br/>&nbsp;&nbsp;&lt;code>NNN&lt;/code><br/>&nbsp;&nbsp;&lt;message>human readable explanation&lt;/message><br/>&lt;/failed></verbatim>|The IUD methods return an XML response with code & message format are On success and On failure|
+|Search (get)| | |The search methods returns results in RDF format according to FOAF, SIOC and SIOC types module ontology. See ODS RDF model.|
+
+*/

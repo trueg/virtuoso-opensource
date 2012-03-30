@@ -1,0 +1,14 @@
+/**
+ * \defgroup ods_module_instance ODS App Instance Management API
+ * Provides procedures for instance management like creating a new instance or retrieving an instance id.
+ */
+
+/**
+ * \defgroup ods_module_user ODS User Management API
+ * The user management API provides procedures for user lookup, creation, and manipulation.
+ */
+
+/**
+ * \defgroup ods_module_ontology ODS Ontology Management API
+ *
+ */

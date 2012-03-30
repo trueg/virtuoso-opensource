@@ -6152,18 +6152,3 @@ create procedure OAUTH..check_authentication (
 ;
 
 use DB;
-
-/**
- * \defgroup instance ODS App Instance Management API
- * Provides procedures for instance management like creating a new instance or retrieving an instance id.
- */
-
-/**
- * \defgroup user ODS User Management API
- * The user management API provides procedures for user lookup, creation, and manipulation.
- */
-
-/**
- * \defgroup ontology ODS Ontology Management API
- * 
- */
