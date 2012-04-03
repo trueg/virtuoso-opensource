@@ -1,14 +1,25 @@
 /**
- * \defgroup ods_module_instance ODS App Instance Management API
- * Provides procedures for instance management like creating a new instance or retrieving an instance id.
+\defgroup ods_module_instance ODS App Instance Management API
+
+Provides procedures for instance management like creating a new instance or retrieving an instance id.
+
+\section ods_instance_id ODS App Instance Ids
+
+Each application instance in ODS which has been created though instance.create() has a unique numerical id. This id is required
+as parameter in many methods throughout the ODS API.
+
+There are two ways to discover the id of an instance through the ODS API:
+-# If the name of the instance is known a simple call to instance.get.id() is sufficient.
+-# If the exact name is not known the instance can be searched via instance.search().
+
+FIXME: we need a method to list all instances with an optional type restriction.
  */
 
 /**
- * \defgroup ods_module_user ODS User Management API
- * The user management API provides procedures for user lookup, creation, and manipulation.
- */
+\defgroup ods_module_user ODS User Management API
+The user management API provides procedures for user lookup, creation, and manipulation.
+*/
 
 /**
- * \defgroup ods_module_ontology ODS Ontology Management API
- *
- */
+\defgroup ods_module_ontology ODS Ontology Management API
+*/

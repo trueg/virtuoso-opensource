@@ -87,6 +87,117 @@ create procedure ODS.ODS_API.calendar_type_check (
 
 -------------------------------------------------------------------------------
 --
+/**
+\brief Get the details of a specific event or task.
+
+\param event_id The id of the event or task. Event ids are unque across calendar instances.
+
+\return A set of RDF triples detailing the event or task encoded as RDF+XML.
+
+\b Example:
+\verbatim
+$ curl -i "http://ods-qa.openlinksw.com/ods/api/calendar.get?event_id=3286&user_name=demo&password_hash=921q783d9e4cbdf5cvs343dafdfvrf6a4fh"
+
+HTTP/1.1 200 OK
+Server: Virtuoso/06.02.3129 (Linux) x86_64-generic-linux-glibc25-64  VDB
+Connection: Keep-Alive
+Date: Tue, 24 May 2011 21:05:58 GMT
+Accept-Ranges: bytes
+Content-Type: application/sparql-results+xml
+Content-Length: 7809
+
+<?xml version="1.0" encoding="utf-8" ?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+  <rdf:Description rdf:about="http://ods-qa.openlinksw.com/dataspace/demo/calendar/Demo%20User%27s%20Calendar/Event/3286#this">
+    <sioc:content xmlns:sioc="http://rdfs.org/sioc/ns#">test</sioc:content>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ods-qa.openlinksw.com/dataspace/demo/calendar/Demo%20User%27s%20Calendar/Event/3286#this">
+    <sioc:has_creator xmlns:sioc="http://rdfs.org/sioc/ns#" rdf:resource="http://ods-qa.openlinksw.com/dataspace/demo#this"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ods-qa.openlinksw.com/dataspace/demo/calendar/Demo%20User%27s%20Calendar/Event/3286#this">
+    <n0pred:description xmlns:n0pred="http://www.w3.org/2002/12/cal#">test</n0pred:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ods-qa.openlinksw.com/dataspace/demo/calendar/Demo%20User%27s%20Calendar/Event/3286#this">
+    <rdf:type rdf:resource="http://atomowl.org/ontologies/atomrdf#Entry"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ods-qa.openlinksw.com/dataspace/demo/calendar/Demo%20User%27s%20Calendar/Event/3286#this">
+    <rdf:type rdf:resource="http://www.w3.org/2002/12/cal#vevent"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ods-qa.openlinksw.com/dataspace/demo/calendar/Demo%20User%27s%20Calendar/Event/3286#this">
+    <opl:isDescribedUsing xmlns:opl="http://www.openlinksw.com/schema/attribution#" rdf:resource="http://ods-qa.openlinksw.com/dataspace/demo/calendar/Demo%20User%27s%20Calendar/Event/3286/sioc.rdf"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ods-qa.openlinksw.com/dataspace/demo/calendar/Demo%20User%27s%20Calendar/Event/3286#this">
+    <atom:updated xmlns:atom="http://atomowl.org/ontologies/atomrdf#">2011-05-24T21:01:53Z</atom:updated>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ods-qa.openlinksw.com/dataspace/demo/calendar/Demo%20User%27s%20Calendar/Event/3286#this">
+    <n0pred:lastModified xmlns:n0pred="http://www.w3.org/2002/12/cal#" rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2011-05-24T17:01:53-04:00</n0pred:lastModified>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ods-qa.openlinksw.com/dataspace/demo/calendar/Demo%20User%27s%20Calendar/Event/3286#this">
+    <n0pred:dtstamp xmlns:n0pred="http://www.w3.org/2002/12/cal#" rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2011-05-24T17:01:53.000004-04:00</n0pred:dtstamp>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ods-qa.openlinksw.com/dataspace/demo/calendar/Demo%20User%27s%20Calendar/Event/3286#this">
+    <foaf:maker xmlns:foaf="http://xmlns.com/foaf/0.1/" rdf:resource="http://ods-qa.openlinksw.com/dataspace/person/demo#this"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ods-qa.openlinksw.com/dataspace/demo/calendar/Demo%20User%27s%20Calendar/Event/3286#this">
+    <n0pred:dtstart xmlns:n0pred="http://www.w3.org/2002/12/cal#" rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2011-05-20T00:00:00-04:00</n0pred:dtstart>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ods-qa.openlinksw.com/dataspace/demo/calendar/Demo%20User%27s%20Calendar/Event/3286#this">
+    <n0pred:created xmlns:n0pred="http://www.w3.org/2002/12/cal#" rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2011-05-24T17:01:53-04:00</n0pred:created>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ods-qa.openlinksw.com/dataspace/demo/calendar/Demo%20User%27s%20Calendar/Event/3286#this">
+    <sioc:id xmlns:sioc="http://rdfs.org/sioc/ns#">ef922cbdd8636f7829a24af90b522cf3</sioc:id>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ods-qa.openlinksw.com/dataspace/demo/calendar/Demo%20User%27s%20Calendar/Event/3286#this">
+    <n0pred:url xmlns:n0pred="http://www.w3.org/2002/12/cal#">http://ods-qa.openlinksw.com:80/calendar/148/home.vspx?id=3286</n0pred:url>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ods-qa.openlinksw.com/dataspace/demo/calendar/Demo%20User%27s%20Calendar/Event/3286#this">
+    <atom:title xmlns:atom="http://atomowl.org/ontologies/atomrdf#">demoevent</atom:title>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ods-qa.openlinksw.com/dataspace/demo/calendar/Demo%20User%27s%20Calendar/Event/3286#this">
+    <n0pred:notes xmlns:n0pred="http://www.w3.org/2002/12/cal#"></n0pred:notes>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ods-qa.openlinksw.com/dataspace/demo/calendar/Demo%20User%27s%20Calendar/Event/3286#this">
+    <n0pred:class xmlns:n0pred="http://www.w3.org/2002/12/cal#">PUBLIC</n0pred:class>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ods-qa.openlinksw.com/dataspace/demo/calendar/Demo%20User%27s%20Calendar/Event/3286#this">
+    <sioc:link xmlns:sioc="http://rdfs.org/sioc/ns#" rdf:resource="http://ods-qa.openlinksw.com:80/calendar/148/home.vspx?id=3286"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ods-qa.openlinksw.com/dataspace/demo/calendar/Demo%20User%27s%20Calendar/Event/3286#this">
+    <n0pred:dtend xmlns:n0pred="http://www.w3.org/2002/12/cal#" rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2011-05-20T00:00:00-04:00</n0pred:dtend>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ods-qa.openlinksw.com/dataspace/demo/calendar/Demo%20User%27s%20Calendar/Event/3286#this">
+    <n0pred:has_services xmlns:n0pred="http://rdfs.org/sioc/services#" rdf:resource="http://ods-qa.openlinksw.com/dataspace/services/calendar/event"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ods-qa.openlinksw.com/dataspace/demo/calendar/Demo%20User%27s%20Calendar/Event/3286#this">
+    <dc:title xmlns:dc="http://purl.org/dc/elements/1.1/">demoevent</dc:title>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ods-qa.openlinksw.com/dataspace/demo/calendar/Demo%20User%27s%20Calendar/Event/3286#this">
+    <n0pred:summary xmlns:n0pred="http://www.w3.org/2002/12/cal#">demoevent</n0pred:summary>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ods-qa.openlinksw.com/dataspace/demo/calendar/Demo%20User%27s%20Calendar/Event/3286#this">
+    <sioc:has_container xmlns:sioc="http://rdfs.org/sioc/ns#" rdf:resource="http://ods-qa.openlinksw.com/dataspace/demo/calendar/Demo%20User%27s%20Calendar"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ods-qa.openlinksw.com/dataspace/demo/calendar/Demo%20User%27s%20Calendar/Event/3286#this">
+    <atom:published xmlns:atom="http://atomowl.org/ontologies/atomrdf#">2011-05-24T21:01:53Z</atom:published>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ods-qa.openlinksw.com/dataspace/demo/calendar/Demo%20User%27s%20Calendar/Event/3286#this">
+    <atom:author xmlns:atom="http://atomowl.org/ontologies/atomrdf#" rdf:resource="http://ods-qa.openlinksw.com/dataspace/person/demo#this"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ods-qa.openlinksw.com/dataspace/demo/calendar/Demo%20User%27s%20Calendar/Event/3286#this">
+    <rdfs:label>demoevent</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ods-qa.openlinksw.com/dataspace/demo/calendar/Demo%20User%27s%20Calendar/Event/3286#this">
+    <dcterms:modified xmlns:dcterms="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2011-05-24T17:01:53-04:00</dcterms:modified>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ods-qa.openlinksw.com/dataspace/demo/calendar/Demo%20User%27s%20Calendar/Event/3286#this">
+    <dcterms:created xmlns:dcterms="http://purl.org/dc/terms/" rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2011-05-24T17:01:53-04:00</dcterms:created>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ods-qa.openlinksw.com/dataspace/demo/calendar/Demo%20User%27s%20Calendar/Event/3286#this">
+    <atom:source xmlns:atom="http://atomowl.org/ontologies/atomrdf#" rdf:resource="http://ods-qa.openlinksw.com/dataspace/demo/calendar/Demo%20User%27s%20Calendar"/>
+  </rdf:Description>
+</rdf:RDF>
+\endverbatim
+*/
 create procedure ODS.ODS_API."calendar.get" (
   in event_id integer) __soap_http 'text/xml'
 {
@@ -114,8 +225,62 @@ create procedure ODS.ODS_API."calendar.get" (
 -------------------------------------------------------------------------------
 --
 /**
- * \brief Create a new Calendar event
- */
+\brief Create a new Calendar event.
+
+\param inst_id The id of the Calendar app instance. See \ref ods_instance_id for details.
+\param uid 
+\param subject The subject/title of the task.
+\param description The optional description of the task, typically longer than \p subject.
+\param location 
+\param attendees An optional comma-separated list of email addresses of people working on the task.
+\param privacy Set the new event to be public \p (1) or private \p (0) or controlled by ACL \p (2). See \ref ods_permissions_acl for details.
+\param tags An optional comma-separated list of tags to assign to the new event.
+\param event The type of the event: An all-day event \p (1) or an intervall event \p (0) for which both \p eventStart and \p eventEnd should contain a time.
+\param eventStart The start of the event as a datetime value. This only requires a time if the type of the event
+                  is set to intervall \p (0). Otherwise only the date is required. See also
+                  <a href="http://docs.openlinksw.com/virtuoso/coredbengine.html#DTTIMESTAMP">Virtuoso TIMESTAMP; DATE & TIME</a>.
+\param eventEnd The end time of the event. The same rules apply as for \p eventStart.
+\param eRepeat Sets the event repetition:
+- An empty value (the default) means no repetition
+- \p D1 - repeats every Nth day where \p eRepeatParam1 indicates the interval (1 for every day, 3 for every 3rd day, etc.)
+- \p D2 - repeats every weekday (Monday to Friday)
+- \p W1 - repeats every Nth week (indicated by \p eRepeatParam1) on the week days indicated by \p eRepeatParam2. This is realized as a bitmask where
+          each day in the week corresponds to one bit. So to specify for example Mon, Tue, and Sat a value of \p 2^0+2^1+2^5=35 needs to be specified as
+          \p eRepeatParam2.
+- \p M1 - repeats on every Nth day (indicated by \p eRepeatParam1) of the Mth month (indicated by \p eRepeatParam2)
+- \p M2 - repeats the 1st, 2nd, 3rd, 4th, or last (indicated by 1-5 in \p eRepeatParam1) day , weekday, weekend, Mon, Tue, ..., or Sun (indicated by
+          1-10 in \p eRepeatParam2) of every Nth month (indicated by \p eRepeatParam3).
+- \p Y1 - repeats every N years (indicated by \p eRepeatParam1) on the month and day indicated by \p eRepeatParam2 and \p eRepeatParam3 respectively.
+- \p Y2 - repeats the 1st, 2nd, 3rd, 4th, or last (indicated by 1-5 in \p eRepeatParam1) day , weekday, weekend, Mon, Tue, ..., or Sun (indicated by
+          1-10 in \p eRepeatParam2) of the month indicated by \p eRepeatParam3 (Jan to Dec).
+\param eRepeatParam1 Additional repetition parameter as detailed above.
+\param eRepeatParam2 Additional repetition parameter as detailed above.
+\param eRepeatParam3 Additional repetition parameter as detailed above.
+\param eRepeatUntil An optional datetime when to end the repetition of the event.
+\param eReminder \p 0 to disable the reminder or the time in seconds of how long before the event the reminder should be shown.
+\param notes Additional notes on the event. FIXME: what is the difference to description?
+
+\return An error code stating the success of the command execution as detailed in \ref ods_response_format_result_code. If the event
+was successfully created the error code will match the id or the newly created event.
+
+\b Example:
+\verbatim
+$ curl -i "http://ods-qa.openlinksw.com/ods/api/calendar.event.new?inst_id=148&subject=test_event&description=test&eventStart=2011.05.20&eventEnd=2011.05.20&event=1&user_name=demo&password_hash=921q783d9e4cbdf5cvs343dafdfvrf6a4fh"
+
+HTTP/1.1 200 OK
+Server: Virtuoso/06.02.3129 (Linux) x86_64-generic-linux-glibc25-64  VDB
+Connection: Keep-Alive
+Date: Fri, 20 May 2011 05:23:09 GMT
+Accept-Ranges: bytes
+Content-Type: text/xml; charset="UTF-8"
+Content-Length: 60
+
+<result>
+  <code>2517</code>
+  <message>Success</message>
+</result>
+\endverbatim
+*/
 create procedure ODS.ODS_API."calendar.event.new" (
   in inst_id integer,
   in uid varchar := null,

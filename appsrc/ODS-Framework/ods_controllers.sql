@@ -5763,35 +5763,38 @@ create procedure ODS.ODS_API."instance.get" (
 ;
 
 /**
- * \brief Get the app instance id by name.
- *
- * Each ODS app has a unique numeric id which is required for almost
- * all operations. This method allows to determine that id from the
- * app instance's name (App instance names are oftern something like
- * "foobar's Calendar").
- *
- * \param[in] instanceName The name of the instance.
- *
- * \return The instance id or an error if the instance name does not
- * exist.
- *
- * Example:
- * \code
-$ curl -i "http://localhost:8894/ods/api/instance.get.id?user_name=test1&password_hash=ceaff0fb7e79a7929ba9fbccfe863585df6401d1&instanceName=MyAddressBook1"
+\brief Get the id of an ODS app instance.
+
+Each ODS app has a unique numeric id which is required for almost
+all operations. This method allows to determine that id from the
+app instance's name (App instance names are oftern something like
+"foobar's Calendar").
+
+\param instanceName The name of the app instance.
+
+\return An error code as defined in \ref ods_response_format_result_code which in this case
+matches the instance id.
+
+\sa \ref ods_instance_id
+
+\b Example:
+\verbatim
+$ curl -i "http://demo.openlinksw.com/ods/api/instance.get.id?instanceName=Demo%20account%27s%20Briefcase&sid=c198c56e675abd9967b2b264d1119ae2&realm=wa"
+
 HTTP/1.1 200 OK
-Server: Virtuoso/05.12.3041 (Win32) i686-generic-win-32  VDB
+Server: Virtuoso/05.12.3041 (Solaris) x86_64-sun-solaris2.10-64  VDB
 Connection: Keep-Alive
-Date: Wed, 30 Dec 2009 11:59:34 GMT
+Date: Tue, 01 Dec 2009 12:39:19 GMT
 Accept-Ranges: bytes
 Content-Type: text/xml; charset="ISO-8859-1"
-Content-Length: 59
+Content-Length: 57
 
 <result>
-  <code>225</code>
+  <code>6</code>
   <message>Success</message>
 </result>
- * \endcode
- */
+\endverbatim
+*/
 create procedure ODS.ODS_API."instance.get.id" (
   in instanceName varchar) __soap_http 'text/xml'
 {
