@@ -77,6 +77,9 @@ CRUD operations typically return an error/result code serialized as XML. Such an
 
 It contains a numeric error code and a human-readable error message. On success this message is typically "Success".
 
+Many ODS functions return the numerical id of the current resource as the code. Typical examples are functions that create
+resource like calendar.event.create().
+
 \subsection ods_response_format_search_result ODS Search Results
 
 The search methods return results in RDF format according to FOAF, SIOC and SIOC types module ontology. See ODS RDF model.

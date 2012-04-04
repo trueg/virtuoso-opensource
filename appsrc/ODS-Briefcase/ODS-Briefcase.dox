@@ -67,4 +67,8 @@ and non-recursive metadata extraction.
 
 For more details see <a href="http://docs.openlinksw.com/virtuoso/webdavserver.html#accesspermofwebres">Access Right
 Permissions of Web Resources</a> in the Virtuoso server documentation.
+
+\subsection ods_permissions_acl ODS Access Control Lists (ACL)
+
+FIXME: explain how that works in ODS including WebID and so on.
 */
