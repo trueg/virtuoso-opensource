@@ -1029,6 +1029,38 @@ create procedure ODS.ODS_API."briefcase.resource.delete" (
 
 -------------------------------------------------------------------------------
 --
+/**
+\brief Get details about a WebDAV collection.
+
+\param path The path to the collection.
+
+\return The details of the collection encoded as XML.
+
+\b Example:
+\verbatim
+$ curl -i "http://demo.openlinksw.com/ods/api/briefcase.collection.info?path=/DAV/home/demo/mytest&user_name=demo&password_hash=921q783d9e4cbdf5cvs343dafdfvrf6a4fh"
+
+HTTP/1.1 200 OK
+Server: Virtuoso/06.02.3129 (Solaris) x86_64-pc-solaris2.10-64  VDB
+Connection: Keep-Alive
+Date: Tue, 10 May 2011 12:08:13 GMT
+Accept-Ranges: bytes
+Content-Type: text/xml; charset="UTF-8"
+Content-Length: 309
+
+<item path="/DAV/home/demo/mytest/">
+  <name>mytest</name>
+  <mimeType>dav/unix-directory</mimeType>
+  <owner>demo</owner>
+  <group>demo</group>
+  <permissions>rw-r--r--</permissions>
+  <modification>2011-05-10</modification>
+  <creation>2011-05-10</creation>
+  <properties></properties>
+  <shares></shares>
+</item>
+\endverbatim
+*/
 create procedure ODS.ODS_API."briefcase.collection.info" (
   in path varchar) __soap_http 'text/xml'
 {
